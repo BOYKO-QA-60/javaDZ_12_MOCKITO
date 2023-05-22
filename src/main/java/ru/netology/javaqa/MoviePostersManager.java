@@ -2,10 +2,14 @@ package ru.netology.javaqa;
 
 public class MoviePostersManager {
     public MoviePosters[] movies = new MoviePosters[0];
-    private final int limit;
+    private int limit;
 
     public MoviePostersManager() {
         this.limit = 5;
+    }
+
+    public int getLimit() {
+        return limit;
     }
 
     public MoviePostersManager(int limit) {
@@ -14,7 +18,9 @@ public class MoviePostersManager {
 
     public void addMovie(MoviePosters movie) {
         MoviePosters[] tmp = new MoviePosters[movies.length + 1];
-        System.arraycopy(movies, 0, tmp, 0, movies.length);
+        for (int i = 0; i < movies.length; i++) {
+            tmp[i] = movies[i];
+        }
         tmp[tmp.length - 1] = movie;
         movies = tmp;
     }

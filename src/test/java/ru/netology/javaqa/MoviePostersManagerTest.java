@@ -54,4 +54,56 @@ public class MoviePostersManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldFindLastLess() {
+        MoviePostersManager manager = new MoviePostersManager(5);
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+
+        MoviePosters[] expected = {movie3, movie2, movie1};
+        MoviePosters[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindLastMore() {
+        MoviePostersManager manager = new MoviePostersManager(3);
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+
+        MoviePosters[] expected = {movie5, movie4, movie3};
+        MoviePosters[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindLastEqual() {
+        MoviePostersManager manager = new MoviePostersManager(4);
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+
+        MoviePosters[] expected = {movie4, movie3, movie2, movie1};
+        MoviePosters[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldCheckLimit() {
+        MoviePostersManager manager2 = new MoviePostersManager();
+
+        int expected = 5;
+        int actual = manager2.getLimit();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 }

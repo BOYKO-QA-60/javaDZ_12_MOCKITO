@@ -11,6 +11,8 @@ public class MoviePosters {
         this.movieGenre = movieGenre;
     }
 
+
+
     public int getMovieID() {
         return movieID;
     }
